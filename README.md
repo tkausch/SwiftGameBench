@@ -38,4 +38,4 @@ Another important property is the *validMoves*. It should  return all valid move
 And last but not least don't forget your Board Unit Tests. You will love it!
 
 ## Heuristic for Connect 4 ##
-The used heuristic for *ConnectBoard* uses the fact that it is better to have a stone in the middle columns than on the edge columns. It uses the column weights *[10, 20, 40, 80, 40, 20, 10]* for each stone and takes the sum over all stones on the board  where a white stone has positiv weight and a black stone a negative one. This sum can be adjusted with only one addition for each move and is therefore very efficient!
+The used heuristic for *ConnectBoard* uses the fact that it is better to have a stone in the middle columns than on the edge columns. It uses the column weights *[10, 20, 40, 80, 40, 20, 10]* for each stone and takes the sum over all stones on the board  where a white stone has positiv weight and a black stone a negative one. This sum can be adjusted with only one addition for each move and is therefore very efficient!Thomas Kausch
