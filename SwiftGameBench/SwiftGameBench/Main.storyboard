@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="FtC-Z7-vxc">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Connect Board View Controller-->
+        <scene sceneID="7gx-EW-4Ft">
+            <objects>
+                <viewController id="FtC-Z7-vxc" customClass="ConnectBoardViewController" customModule="SwiftGameBench" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Qg6-fN-zQH"/>
+                        <viewControllerLayoutGuide type="bottom" id="4G3-i9-6SU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FnF-Tm-nN1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1BZ-kC-9xs">
+                                <rect key="frame" x="16" y="20" width="79" height="30"/>
+                                <state key="normal" title="Undo Move"/>
+                                <connections>
+                                    <action selector="undoMove:" destination="FtC-Z7-vxc" eventType="touchUpInside" id="SZs-XE-cVo"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OJ7-87-zoO">
+                                <rect key="frame" x="284" y="20" width="75" height="30"/>
+                                <state key="normal" title="New Game"/>
+                                <connections>
+                                    <action selector="newGame:" destination="FtC-Z7-vxc" eventType="touchUpInside" id="bUq-Dn-eU1"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Over" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sdz-15-BZT">
+                                <rect key="frame" x="144" y="626" width="87" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="nca-lu-zcm">
+                                <rect key="frame" x="239" y="627" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="bb7-gE-xcX">
+                                <rect key="frame" x="128.5" y="80" width="118" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="114" id="KiJ-qV-YVU"/>
+                                    <constraint firstAttribute="height" constant="30" id="h3s-QW-sre"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="sliderValueChanged:" destination="FtC-Z7-vxc" eventType="valueChanged" id="BuW-u3-yrc"/>
+                                </connections>
+                            </slider>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="99C-sb-cgi" customClass="ConnectBoardView" customModule="SwiftGameBench" customModuleProvider="target">
+                                <rect key="frame" x="16" y="190" width="343" height="295"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="99C-sb-cgi" secondAttribute="height" multiplier="64:55" id="9AQ-Qq-8nH"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Level" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rkq-Ym-jAP">
+                                <rect key="frame" x="80" y="80" width="40" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="99C-sb-cgi" firstAttribute="top" secondItem="bb7-gE-xcX" secondAttribute="bottom" constant="80" id="03W-Q5-o2U"/>
+                            <constraint firstItem="1BZ-kC-9xs" firstAttribute="leading" secondItem="FnF-Tm-nN1" secondAttribute="leadingMargin" id="7qg-ha-BvP"/>
+                            <constraint firstItem="nca-lu-zcm" firstAttribute="bottom" secondItem="Sdz-15-BZT" secondAttribute="bottom" id="8Yc-BH-g83"/>
+                            <constraint firstItem="bb7-gE-xcX" firstAttribute="top" secondItem="Qg6-fN-zQH" secondAttribute="bottom" constant="80" id="9RR-7Z-osj"/>
+                            <constraint firstItem="1BZ-kC-9xs" firstAttribute="top" secondItem="Qg6-fN-zQH" secondAttribute="bottom" constant="20" id="A85-Wt-HZH"/>
+                            <constraint firstItem="OJ7-87-zoO" firstAttribute="trailing" secondItem="FnF-Tm-nN1" secondAttribute="trailingMargin" id="FKA-M7-TjR"/>
+                            <constraint firstItem="99C-sb-cgi" firstAttribute="leading" secondItem="FnF-Tm-nN1" secondAttribute="leading" constant="16" id="Sj9-Ve-utS"/>
+                            <constraint firstItem="nca-lu-zcm" firstAttribute="leading" secondItem="Sdz-15-BZT" secondAttribute="trailing" constant="8" id="SjM-mr-wAq"/>
+                            <constraint firstItem="Sdz-15-BZT" firstAttribute="centerX" secondItem="FnF-Tm-nN1" secondAttribute="centerX" id="evg-Jw-3M3"/>
+                            <constraint firstItem="4G3-i9-6SU" firstAttribute="top" secondItem="Sdz-15-BZT" secondAttribute="bottom" constant="20" id="hN3-pp-S3R"/>
+                            <constraint firstItem="OJ7-87-zoO" firstAttribute="top" secondItem="Qg6-fN-zQH" secondAttribute="bottom" constant="20" id="hoa-4H-oWo"/>
+                            <constraint firstItem="bb7-gE-xcX" firstAttribute="leading" secondItem="rkq-Ym-jAP" secondAttribute="trailing" constant="10.5" id="mBd-U4-7J6"/>
+                            <constraint firstItem="bb7-gE-xcX" firstAttribute="centerX" secondItem="FnF-Tm-nN1" secondAttribute="centerX" id="ngY-Yf-phb"/>
+                            <constraint firstAttribute="trailing" secondItem="99C-sb-cgi" secondAttribute="trailing" constant="16" id="rSi-Qe-sJg"/>
+                            <constraint firstItem="bb7-gE-xcX" firstAttribute="bottom" secondItem="rkq-Ym-jAP" secondAttribute="bottom" id="svn-A0-drd"/>
+                            <constraint firstItem="bb7-gE-xcX" firstAttribute="centerY" secondItem="rkq-Ym-jAP" secondAttribute="centerY" id="y2U-Dz-faD"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicatorView" destination="nca-lu-zcm" id="Cdu-IQ-pfq"/>
+                        <outlet property="connectBoardView" destination="99C-sb-cgi" id="dnL-Sy-Ddg"/>
+                        <outlet property="levelSlider" destination="bb7-gE-xcX" id="X6i-sI-WHF"/>
+                        <outlet property="messageLabel" destination="Sdz-15-BZT" id="rzB-sx-P9n"/>
+                        <outlet property="newGameButton" destination="OJ7-87-zoO" id="Jjn-Di-Opn"/>
+                        <outlet property="undoButton" destination="1BZ-kC-9xs" id="0c3-An-crA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yhz-Ba-Fsb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-198" y="20"/>
+        </scene>
+    </scenes>
+</document>
