@@ -23,7 +23,7 @@
 import UIKit
 import SwiftGameBenchFramework
 
-class ConnectBoardViewController: UIViewController, ConnectBoardViewDelegate {
+class ConnectBoardViewController: UIViewController {
     
     @IBOutlet weak var connectBoardView: ConnectBoardView!
     
@@ -34,7 +34,6 @@ class ConnectBoardViewController: UIViewController, ConnectBoardViewDelegate {
     @IBOutlet weak var newGameButton: UIButton!
     
     @IBOutlet weak var levelSlider: UISlider!
-    
     
     fileprivate let board = ConnectBoard()
     fileprivate let searchEngine = AlphaBetaSearchEngine<ConnectBoard>()
@@ -54,7 +53,6 @@ class ConnectBoardViewController: UIViewController, ConnectBoardViewDelegate {
         levelSlider.maximumValue = 6.0
         levelSlider.minimumValue = 1.0
         levelSlider.value = 3.0
-        
         
         updateMessageWithHint("Touch a column to move!\nYou are the red player.")
         updateButtons()
@@ -108,25 +106,7 @@ class ConnectBoardViewController: UIViewController, ConnectBoardViewDelegate {
         }
     }
     
-    
-    func didSelectColumn(_ column: Int) {
-        if let move = board.moveForColumn(column + 1) {
-            board.doMove(move)
-            moves.append(move)
-            updateButtons()
-            updateMessageWithHint(nil)
-            if !board.isEndPosition && board.nextPlayer  == .black {
-                computeNextMove()
-            }
-        } else {
-            if board.isEndPosition {
-                updateMessageWithHint("You can't move!")
-            } else {
-                // move was nil - means column was invalid
-                updateMessageWithHint("Select another column!")
-            }
-        }
-    }
+
 
     
     func computeNextMove() {
@@ -199,5 +179,30 @@ class ConnectBoardViewController: UIViewController, ConnectBoardViewDelegate {
         
     }
 
+}
+
+
+extension ConnectBoardViewController: ConnectBoardViewDelegate {
+    
+    
+    func didSelectColumn(_ column: Int) {
+        if let move = board.moveForColumn(column + 1) {
+            board.doMove(move)
+            moves.append(move)
+            updateButtons()
+            updateMessageWithHint(nil)
+            if !board.isEndPosition && board.nextPlayer  == .black {
+                computeNextMove()
+            }
+        } else {
+            if board.isEndPosition {
+                updateMessageWithHint("You can't move!")
+            } else {
+                // move was nil - means column was invalid
+                updateMessageWithHint("Select another column!")
+            }
+        }
+    }
+    
 }
 
